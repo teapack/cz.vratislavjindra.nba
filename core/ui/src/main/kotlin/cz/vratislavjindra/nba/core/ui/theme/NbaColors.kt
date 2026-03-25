@@ -1,5 +1,4 @@
-package cz.vratislavjindra.nba.app.ui.theme
-
+package cz.vratislavjindra.nba.core.ui.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf

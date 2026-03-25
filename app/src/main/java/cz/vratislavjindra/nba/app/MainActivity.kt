@@ -5,13 +5,19 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import cz.vratislavjindra.nba.app.ui.theme.NbaTheme
+import cz.vratislavjindra.nba.core.ui.component.topappbar.NbaTopAppBar
+import cz.vratislavjindra.nba.core.ui.component.topappbar.TopAppBarModel
+import cz.vratislavjindra.nba.core.ui.theme.NbaTheme
+import cz.vratislavjindra.nba.core.ui.theme.Theme
+import cz.vratislavjindra.nba.core.ui.utils.DevicePreviews
+import cz.vratislavjindra.nba.core.ui.utils.ThemePreviews
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,11 +28,22 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NbaTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(paddingValues = innerPadding),
-                    )
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    topBar = {
+                        NbaTopAppBar(
+                            model = TopAppBarModel(title = "NBA App"),
+                        )
+                    },
+                ) { innerPadding ->
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize(),
+                        contentPadding = innerPadding,
+                    ) {
+                        items(count = 100) { index ->
+                            Greeting(name = "Android $index")
+                        }
+                    }
                 }
             }
         }
@@ -34,15 +51,21 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(
+    name: String,
+    modifier: Modifier = Modifier,
+) {
     Text(
         text = "Hello $name!",
         modifier = modifier
+            .fillMaxWidth()
+            .padding(all = Theme.dimensions.paddingDefault),
     )
 }
 
-@Preview(showBackground = true)
 @Composable
+@DevicePreviews
+@ThemePreviews
 fun GreetingPreview() {
     NbaTheme {
         Greeting(name = "Android")

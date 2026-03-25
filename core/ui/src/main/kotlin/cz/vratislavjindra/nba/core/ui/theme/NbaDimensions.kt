@@ -1,10 +1,11 @@
-package cz.vratislavjindra.nba.app.ui.theme
+package cz.vratislavjindra.nba.core.ui.theme
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 data class NbaDimensions(
+    val elevationDefault: Dp = 4.dp,
     val paddingExtraSmall: Dp = 4.dp,
     val paddingSmall: Dp = 8.dp,
     val paddingDefault: Dp = 16.dp,
