@@ -1,4 +1,13 @@
 [versions]
+# App versions
+app-version-code = "1"
+app-version-name = "1.0-beta"
+
+# SDK versions
+android-sdk-compile = "36"
+android-sdk-min = "30"
+android-sdk-target = "36"
+
 activity-compose = "1.13.0"
 android-gradle-plugin = "9.1.0"
 coil = "3.4.0"

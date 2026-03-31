@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "cz.vratislavjindra.nba.core.ui"
-    compileSdk = 36
+    compileSdk = libs.versions.android.sdk.compile.get().toInt()
 
     buildFeatures {
         compose = true
