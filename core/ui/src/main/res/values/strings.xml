@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Content description. -->
+    <string name="content_description_button_navigate_up">Up</string>
+    <string name="content_description_navigation_card_trailing_image">Arrow right icon</string>
+</resources>

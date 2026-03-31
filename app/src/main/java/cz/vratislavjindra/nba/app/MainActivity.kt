@@ -5,13 +5,19 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.Help
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import cz.vratislavjindra.nba.app.ui.theme.NbaTheme
+import cz.vratislavjindra.nba.core.ui.component.navigationcard.NavigationCardModel
+import cz.vratislavjindra.nba.core.ui.component.navigationcard.NbaNavigationCard
+import cz.vratislavjindra.nba.core.ui.component.text.TextModel
+import cz.vratislavjindra.nba.core.ui.component.topappbar.NbaTopAppBar
+import cz.vratislavjindra.nba.core.ui.component.topappbar.TopAppBarModel
+import cz.vratislavjindra.nba.core.ui.theme.CardShape
+import cz.vratislavjindra.nba.core.ui.theme.NbaTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,29 +28,42 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NbaTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(paddingValues = innerPadding),
-                    )
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    topBar = {
+                        NbaTopAppBar(
+                            model = TopAppBarModel(title = "NBA App"),
+                        )
+                    },
+                    containerColor = MaterialTheme.colorScheme.background,
+                ) { innerPadding ->
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize(),
+                        contentPadding = innerPadding,
+                    ) {
+                        items(count = 100) { index ->
+                            NbaNavigationCard(
+                                model = NavigationCardModel(
+                                    leadingImage = NavigationCardModel.Image.Vector(
+                                        contentDescription = TextModel.StringText(text = "Help icon"),
+                                        imageVector = Icons.AutoMirrored.Rounded.Help,
+                                    ),
+                                    title = "Title $index",
+                                    description = "Description $index",
+                                    cardShape = when (index) {
+                                        0 -> CardShape.ROUNDED_CORNER_TOP
+                                        99 -> CardShape.ROUNDED_CORNER_BOTTOM
+                                        else -> CardShape.ROUNDED_CORNER_NONE
+                                    },
+                                    onClick = {
+                                        // TODO: Handle click
+                                    },
+                                )
+                            )
+                        }
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NbaTheme {
-        Greeting(name = "Android")
     }
 }
