@@ -79,7 +79,7 @@ private fun AppBarButton(action: TopAppBarModel.TopAppBarAction) {
 @Composable
 @DevicePreviews
 @ThemePreviews
-private fun NbaTopAppBarPreview(@PreviewParameter(provider = TopAppBarMockData::class) model: TopAppBarModel) {
+private fun NbaTopAppBarPreview(@PreviewParameter(provider = TopAppBarModelPreviewProvider::class) model: TopAppBarModel) {
     NbaTheme {
         NbaTopAppBar(model = model)
     }

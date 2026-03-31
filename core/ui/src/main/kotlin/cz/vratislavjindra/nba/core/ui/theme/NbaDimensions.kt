@@ -5,12 +5,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 data class NbaDimensions(
-    val elevationDefault: Dp = 4.dp,
-    val paddingExtraSmall: Dp = 4.dp,
-    val paddingSmall: Dp = 8.dp,
-    val paddingDefault: Dp = 16.dp,
-    val paddingLarge: Dp = 24.dp,
-    val paddingExtraLarge: Dp = 32.dp,
+    val elevationDefault: Dp = Dimensions.grid1,
+    val paddingExtraSmall: Dp = Dimensions.grid1,
+    val paddingSmall: Dp = Dimensions.grid2,
+    val paddingDefault: Dp = Dimensions.grid4,
+    val paddingLarge: Dp = Dimensions.grid6,
+    val paddingExtraLarge: Dp = Dimensions.grid8,
 )
 
 internal val LocalDimensions = staticCompositionLocalOf { NbaDimensions() }

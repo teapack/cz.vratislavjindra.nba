@@ -6,7 +6,7 @@ import androidx.compose.material.icons.automirrored.rounded.Help
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import kotlinx.collections.immutable.persistentListOf
 
-internal class TopAppBarMockData : PreviewParameterProvider<TopAppBarModel> {
+internal class TopAppBarModelPreviewProvider : PreviewParameterProvider<TopAppBarModel> {
 
     override val values: Sequence<TopAppBarModel>
         get() = sequenceOf(

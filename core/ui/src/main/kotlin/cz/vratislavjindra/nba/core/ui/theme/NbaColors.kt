@@ -3,6 +3,7 @@ package cz.vratislavjindra.nba.core.ui.theme
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import cz.vratislavjindra.nba.core.ui.theme.Colors
 
 @Immutable
 data class NbaColors(
@@ -30,7 +31,7 @@ internal fun initializeLightColors(): NbaColors = NbaColors(
     secondary = Colors.Indigo500,
     secondaryVariant = Colors.Indigo700,
     onSecondary = Colors.White,
-    background = Colors.LightGrey100,
+    background = Colors.LightGrey200,
     onBackground = Colors.Black,
     surface = Colors.White,
     onSurface = Colors.Black,

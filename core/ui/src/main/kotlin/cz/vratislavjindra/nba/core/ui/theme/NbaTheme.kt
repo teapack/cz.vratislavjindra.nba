@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.platform.LocalContext
+import cz.vratislavjindra.nba.core.ui.theme.Colors
 
 object Theme {
     val colors: NbaColors
@@ -46,7 +47,7 @@ private val LightColorScheme = lightColorScheme(
     primary = Colors.DeepOrange500,
     secondary = Colors.Indigo500,
     tertiary = Colors.DeepOrange700,
-    background = Colors.LightGrey100,
+    background = Colors.LightGrey200,
     surface = Colors.White,
     onPrimary = Colors.White,
     onSecondary = Colors.White,
@@ -57,10 +58,10 @@ private val LightColorScheme = lightColorScheme(
     onError = Colors.White,
 )
 
-private val LightColors = initializeLightColors()
-private val DarkColors = initializeDarkColors()
-private val Dimensions = NbaDimensions()
-private val Shapes = NbaShapes()
+private val lightColors = initializeLightColors()
+private val darkColors = initializeDarkColors()
+private val dimensions = NbaDimensions()
+private val shapes = NbaShapes()
 
 @Composable
 fun NbaTheme(
@@ -81,9 +82,9 @@ fun NbaTheme(
         else -> LightColorScheme
     }
     CompositionLocalProvider(
-        LocalColors provides if (darkTheme) DarkColors else LightColors,
-        LocalDimensions provides Dimensions,
-        LocalShapes provides Shapes,
+        LocalColors provides if (darkTheme) darkColors else lightColors,
+        LocalDimensions provides dimensions,
+        LocalShapes provides shapes,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
